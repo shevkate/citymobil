@@ -10,6 +10,7 @@ function App() {
     const [carsData, setCarsData] = useState(null);
     const [inputValue, setInputValue] = useState("");
     const [filterString, setFilterString] = useState("");
+    const [carInfoString, setCarInfoString] = useState("");
 
 
     useEffect(() => {
@@ -107,7 +108,16 @@ function App() {
                         <tr key={carIndex}>
                             {
                                 row.map((cellName, cellIndex) => {
-                                    return <td key={cellIndex}>{cellName}</td>
+                                    return <td key={cellIndex} onClick={()=>{
+                                        if(cellIndex===0) {
+                                            setCarInfoString("")
+                                        }
+                                        else if (cellName==="-") {
+                                            setCarInfoString("")
+                                        } else {
+                                            setCarInfoString(`Вы выбрали ${row[0]} ${cellName} года`)
+                                        }
+                                    }}>{cellName}</td>
                                 })
                             }
                         </tr>
@@ -115,6 +125,7 @@ function App() {
                 }
                 </tbody>
             </table>
+            {carInfoString ? <div>{carInfoString}</div> : null}
         </div>
     );
 }
