@@ -1,53 +1,68 @@
-import React,{useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 
 
 function App() {
     const dataUrl = 'https://city-mobil.ru/api/cars';
 
-    const [Data, setData] = useState([])
-    useEffect(()=>{
-        axios(dataUrl).then ((res)=>{
-            console.log(res)
-            setData(res.data)
-            console.log(Data)
-            console.log(typeof Data)
+    const [carsData, setCarsData] = useState(null)
+    useEffect(() => {
+        axios(dataUrl).then((res) => {
+            setCarsData(res.data)
+
         })
-        console.log(Data)
-        console.log(typeof Data)
-        }, [])
 
-    const dataArray = Object.keys(Data).map(function(k){return Data[k]});
-    const DataCars = dataArray[0];
-  return (
-    <div className="container">
-        <table className="table">
-            <thead>
-            <tr>
-                <th scope="col">Марка и модель</th>
-                <th scope="col">Стандарт</th>
-                <th scope="col">Комфорт</th>
-                <th scope="col">Бизнес</th>
-                <th scope="col">Комфорт+</th>
-                <th scope="col">Эконом</th>
-                <th scope="col">Минивен</th>
-                <th scope="col">Лайт</th>
-            </tr>
-            </thead>
+    }, [])
+    console.log(carsData);
+    if (!carsData) {
+        return 'Loading...'
+    }
 
-            <tbody>
-            {DataCars.map(item=>(
+    return (
+        <div className="container">
+            <table className="table">
+                <thead>
                 <tr>
-                <td>{item.mark}</td>
-                <td>{item.model}</td>
+                    <th scope="col">Марка и модель</th>
+
+                    {carsData.tariffs_list.map((tariffName, tariffIndex) => (
+                        <th key={tariffIndex} scope="col">{tariffName}</th>
+
+                    ))
+
+                    }
+
                 </tr>
+                </thead>
+
+                <tbody>
+                {carsData.cars.map((car, carIndex) => (
+                    <tr key={carIndex}>
+                        <td>{`${car.mark} ${car.model}`}</td>
+
+
+                        {carsData.tariffs_list.map((tariffName, tariffIndex) => {
+                            const tariffData = car.tariffs[tariffName];
+                            if (tariffData) {
+                                return <td key={tariffIndex}>{tariffData.year}</td>
+                            } else {
+                                return <td key={tariffIndex}>{"-"}</td>
+                            }
+
+
+                        })
+
+                        }
+
+
+                    </tr>
                 ))}
 
-            </tbody>
-        </table>
+                </tbody>
+            </table>
 
-    </div>
-  );
+        </div>
+    );
 }
 
 export default App;
