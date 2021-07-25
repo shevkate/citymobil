@@ -100,6 +100,8 @@ function App() {
                 }}>Найти
                 </button>
             </form>
+                <div className="tableSize">
+
             <table className="table table-bordered text-center">
                 <thead>
                 <tr>
@@ -134,7 +136,8 @@ function App() {
                 }
                 </tbody>
             </table>
-            {carInfoString ? <div className="chosenCar">{carInfoString}</div> : null}
+                {carInfoString ? <div className="chosenCar">{carInfoString}</div> : null}
+                </div>
         </div>
         </div>
             <div className="footer">

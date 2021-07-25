@@ -13,8 +13,12 @@ code {
     monospace;
 }
 
+table.table.table-bordered text-center {
+  margin-bottom: 0;
+}
 table {
   font-size: 13px;
+  margin: 0 auto;
 }
 
 .pageContent {
@@ -30,6 +34,7 @@ header {
   flex-direction: column;
   justify-content: center;
   text-align: center;
+  position: fixed;
 }
 
 p{
@@ -38,30 +43,39 @@ p{
 }
 
 aside {
-  width: 1px;
-  top: 80px;
+  width: 128px;
+  top: 128px;
+  bottom: 128px;
+  left: 0;
   flex: 1;
   background-color: #E4E5E6;
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
+  position: fixed;
 }
 
 .form-inline {
   display: flex;
   justify-content: center;
-  margin: 25px 35px 16px 35px;
+  margin: 40px 35px 16px 40px;
 }
 
 input.form-control {
-  width: 800px;
+  width: 958px;
   height: 42px;
 }
 
 .logicContent {
   flex: 5;
-  width: 1000px;
+  position: fixed;
+  top: 128px;
+  left:128px;
+  bottom: 128px;
+  right: 0;
+  overflow-y: scroll;
+  overflow-x:hidden;
 }
 
 .footer {
@@ -93,4 +107,9 @@ button {
 /*  margin: 10px 0px;*/
 /*  padding: 20px ;*/
 /*  height: 50px;*/
+/*  position: absolute;*/
+/*}*/
+
+/*.tableSize {*/
+/*  position: absolute;*/
 /*}*/
