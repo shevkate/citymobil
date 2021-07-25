@@ -94,7 +94,7 @@ function App() {
                         setInputValue(event.target.value);
                     }}/>
                 </div>
-                <button type="submit" className="btn btn-primary mb-2" onClick={(event) => {
+                <button type="submit" className="button" onClick={(event) => {
                     event.preventDefault();
                     setFilterString(inputValue.trim().toLowerCase());
                 }}>Найти
@@ -134,7 +134,7 @@ function App() {
                 }
                 </tbody>
             </table>
-            {carInfoString ? <div>{carInfoString}</div> : null}
+            {carInfoString ? <div className="chosenCar">{carInfoString}</div> : null}
         </div>
         </div>
             <div className="footer">
