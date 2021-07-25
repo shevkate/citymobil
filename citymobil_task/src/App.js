@@ -78,7 +78,16 @@ function App() {
         return false;
     })
     return (
-        <div className="container">
+        <div className="main">
+            <header><p>header</p></header>
+
+        <div className="pageContent">
+            <aside>
+                <p>sidebar</p>
+            </aside>
+
+            <div className="logicContent">
+
             <form className="form-inline">
                 <div className="form-group mx-sm-3 mb-2">
                     <input type="text" className="form-control" placeholder="Поиск" onChange={(event) => {
@@ -91,11 +100,11 @@ function App() {
                 }}>Найти
                 </button>
             </form>
-            <table className="table">
+            <table className="table table-bordered text-center">
                 <thead>
                 <tr>
                     {allColumnNames.map((columnName, columnIndex) => (
-                        <th key={columnIndex} scope="col" onClick={() => sortBy(columnName)}>
+                        <th key={columnIndex} scope="col-lg" onClick={() => sortBy(columnName)}>
                             {`${columnName}${columnName === columnToSort ? ascending ? " ↑" : " ↓" : ""}`}
                         </th>
                     ))
@@ -126,6 +135,11 @@ function App() {
                 </tbody>
             </table>
             {carInfoString ? <div>{carInfoString}</div> : null}
+        </div>
+        </div>
+            <div className="footer">
+                <p>footer</p>
+            </div>
         </div>
     );
 }
