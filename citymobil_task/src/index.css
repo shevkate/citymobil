@@ -13,9 +13,6 @@ code {
     monospace;
 }
 
-table.table.table-bordered text-center {
-  margin-bottom: 0;
-}
 table {
   font-size: 13px;
   margin: 0 auto;
